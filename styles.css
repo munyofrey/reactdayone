@@ -1,4 +1,31 @@
 
+ul{
+    display: flex;
+    border: 1px solid #ccc;
+}
+
 .selected {
   font-weight: bold;
+  color: red;
+  padding: 10px;
+  border: 1px solid #ccc;
+
+}
+
+li{
+}
+
+.unselected {
+  padding: 10px;
+  border: 1px solid #ccc;
+  font-weight: normal;
+}
+
+.tabs{
+  border: 1px solid #ccc;
+}
+
+.content {
+  margin-left: 40px;
+  border: 1px solid #ccc;
 }

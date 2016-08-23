@@ -5,26 +5,38 @@ import ReactDOM from 'react-dom';
 class Tabs extends React.Component{
   constructor(props){
     super(props);
-    // this.titles = props.titles;
-    this.titles = ["title1", "title2", "title3"];
-    // this.content = props.content;
-    this.content = ["content1", "content2", "content3"];
+    this.titles = props.titles;
+    this.content = props.content;
     this.state = ({ index: 0, title: this.titles[0], content: this.content[0] });
-    // this.selected = this.state.titles[this.state.index
   }
 
 
   render(){
-    const titles =  this.titles.map( title => {
-      return(<h1 key={title} onClick={this.titleClick.bind(this, title)}>
+    let selectedStatus;
+    const titles =  this.titles.map( (title, index) => {
+      if (index === this.state.index){
+        selectedStatus = "selected";
+      } else {
+        selectedStatus = "unselected";
+      }
+      return(<h1 key={title} onClick={this.titleClick.bind(this, title)} className={selectedStatus}>
         {title}
       </h1>);
     });
+
+    const content = this.content.map((contentMap, index) =>   {
+      if (index === this.state.index){
+       return(<article className='content' key={index}>{contentMap}</article>);}
+    });
+
     return(
-      <div>
-        <ul>
-          { titles }
-        </ul>
+      <div className="tabs">
+        <header>
+          <ul>
+            { titles }
+          </ul>
+        </header>
+          { content }
       </div>
     );
   }
